@@ -3,6 +3,7 @@ export default {
     dashboard: '首页',
     introduction: '简述',
     documentation: '文档',
+    guide: '引导页',
     permission: '权限测试页',
     pagePermission: '页面权限',
     directivePermission: '指令权限',
@@ -27,6 +28,14 @@ export default {
     lineChart: '折线图',
     mixChart: '混合图表',
     example: '综合实例',
+    nested: '路由嵌套',
+    menu1: '菜单1',
+    'menu1-1': '菜单1-1',
+    'menu1-2': '菜单1-2',
+    'menu1-2-1': '菜单1-2-1',
+    'menu1-2-2': '菜单1-2-2',
+    'menu1-3': '菜单1-3',
+    menu2: '菜单2',
     Table: 'Table',
     dynamicTable: '动态Table',
     dragTable: '拖拽Table',
@@ -36,8 +45,9 @@ export default {
     customTreeTable: '自定义树表',
     tab: 'Tab',
     form: '表单',
-    createForm: '创建表单',
-    editForm: '编辑表单',
+    createArticle: '创建文章',
+    editArticle: '编辑文章',
+    articleList: '文章列表',
     errorPages: '错误页面',
     page401: '401',
     page404: '404',
@@ -50,14 +60,16 @@ export default {
     exportZip: 'Export Zip',
     theme: '换肤',
     clipboardDemo: 'Clipboard',
-    i18n: '国际化'
+    i18n: '国际化',
+    externalLink: '外链'
   },
   navbar: {
     logOut: '退出登录',
     dashboard: '首页',
     github: '项目地址',
     screenfull: '全屏',
-    theme: '换肤'
+    theme: '换肤',
+    size: '布局大小'
   },
   login: {
     title: '系统登录',
@@ -75,6 +87,10 @@ export default {
   permission: {
     roles: '你的权限',
     switchRoles: '切换权限'
+  },
+  guide: {
+    description: '引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能。本 Demo 是基于',
+    button: '打开引导'
   },
   components: {
     documentation: '文档',
