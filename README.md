@@ -23,3 +23,6 @@ ui for zealsay
 
 `-g` 表示`globel`安装`vue`为全局环境。
 
+## 脚手架模板参考
+
+git地址: https://github.com/PanJiaChen/vue-element-admin

@@ -4,6 +4,7 @@
     min-height: 100%;
     transition: margin-left .28s;
     margin-left: 180px;
+    position: relative;
   }
   // 侧边栏
   .sidebar-container {
@@ -22,10 +23,13 @@
       transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
     }
     .scrollbar-wrapper {
-      height: calc(100% + 15px);
+      overflow-x: hidden!important;
       .el-scrollbar__view {
         height: 100%;
       }
+    }
+    .el-scrollbar__bar.is-vertical{
+      right: 0px;
     }
     .is-horizontal {
       display: none;
