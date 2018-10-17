@@ -4,6 +4,7 @@
     min-height: 100%;
     transition: margin-left .28s;
     margin-left: 180px;
+    position: relative;
   }
   // 侧边栏
   .sidebar-container {
@@ -22,10 +23,13 @@
       transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
     }
     .scrollbar-wrapper {
-      height: calc(100% + 15px);
+      overflow-x: hidden!important;
       .el-scrollbar__view {
         height: 100%;
       }
+    }
+    .el-scrollbar__bar.is-vertical{
+      right: 0px;
     }
     .is-horizontal {
       display: none;
@@ -42,6 +46,9 @@
       border: none;
       height: 100%;
       width: 100% !important;
+    }
+    .is-active > .el-submenu__title{
+        color: #f4f4f5!important;
     }
   }
   .hideSidebar {
@@ -113,6 +120,14 @@
     .main-container,
     .sidebar-container {
       transition: none;
+    }
+  }
+}
+
+.el-menu--vertical{
+  & >.el-menu{
+    .svg-icon{
+      margin-right: 16px;
     }
   }
 }

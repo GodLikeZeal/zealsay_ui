@@ -143,9 +143,13 @@ const user = {
     },
 
     // 动态修改权限
+<<<<<<< HEAD
     ChangeRoles({
       commit
     }, role) {
+=======
+    ChangeRoles({ commit, dispatch }, role) {
+>>>>>>> 89ae808db71caae7697c1245727c823c2c2543c1
       return new Promise(resolve => {
         commit('SET_TOKEN', role)
         setToken(role)
@@ -155,6 +159,7 @@ const user = {
           commit('SET_NAME', data.name)
           commit('SET_AVATAR', data.avatar)
           commit('SET_INTRODUCTION', data.introduction)
+          dispatch('GenerateRoutes', data) // 动态修改权限后 重绘侧边菜单
           resolve()
         })
       })
