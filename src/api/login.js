@@ -5,8 +5,9 @@ export function loginByUsername(username, password) {
     username,
     password
   }
+  console.log(request)
   return request({
-    url: '/login/login',
+    url: '/authentication/form',
     method: 'post',
     data
   })
