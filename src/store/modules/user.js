@@ -143,13 +143,7 @@ const user = {
     },
 
     // 动态修改权限
-<<<<<<< HEAD
-    ChangeRoles({
-      commit
-    }, role) {
-=======
     ChangeRoles({ commit, dispatch }, role) {
->>>>>>> 89ae808db71caae7697c1245727c823c2c2543c1
       return new Promise(resolve => {
         commit('SET_TOKEN', role)
         setToken(role)
