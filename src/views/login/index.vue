@@ -72,6 +72,7 @@ export default {
   components: { LangSelect, SocialSign },
   data() {
     const validateUsername = (rule, value, callback) => {
+      console.log(value)
       if (!isvalidUsername(value)) {
         callback(new Error('Please enter the correct user name'))
       } else {
@@ -87,8 +88,8 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: '1111111'
+        username: 'zeal',
+        password: '123456'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],

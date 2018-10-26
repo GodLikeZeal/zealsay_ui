@@ -1,15 +1,15 @@
 import request from '@/utils/request'
+import qs from 'qs'
 
 export function loginByUsername(username, password) {
   const data = {
     username,
     password
   }
-  console.log(request)
   return request({
-    url: '/authentication/form',
+    url: '/authentication/login',
     method: 'post',
-    data
+    data: qs.stringify(data)
   })
 }
 
