@@ -1,7 +1,7 @@
 import axios from 'axios'
 import cloneDeep from 'lodash.clonedeep'
 import store from '@/store'
-import { getToken } from '@/utils/auth'
+import { createRequestToken } from '@/utils/auth'
 
 const prifix = process.env.BASE_API
 
@@ -17,7 +17,7 @@ const fetch = (options) => {
   const cloneData = cloneDeep(data)
   let headers
   if (store.getters.token) {
-    headers = { headers: { 'X-Token': getToken() }}
+    headers = { headers: { 'Authorization': createRequestToken() }}
   }
   switch (method.toLowerCase()) {
     case 'get':

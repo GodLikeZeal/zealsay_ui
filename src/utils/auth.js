@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 
 const TokenKey = 'Admin-Token'
+const TokenHeader = 'Bearer '
 
 export function getToken() {
   return Cookies.get(TokenKey)
@@ -12,4 +13,8 @@ export function setToken(token) {
 
 export function removeToken() {
   return Cookies.remove(TokenKey)
+}
+
+export function createRequestToken() {
+  return TokenHeader + getToken()
 }
