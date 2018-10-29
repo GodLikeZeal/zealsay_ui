@@ -2,6 +2,8 @@ import axios from 'axios'
 import cloneDeep from 'lodash.clonedeep'
 import store from '@/store'
 import { createRequestToken } from '@/utils/auth'
+import { Message } from 'element-ui'
+
 
 const prifix = process.env.BASE_API
 
@@ -43,11 +45,21 @@ export default function request(options) {
   return fetch(options).then((response) => {
     const { statusText, status } = response
     const data = response.data
+    if(data.code=='404'){
+      //跳转404路由
+      return
+    }
+    // if(data.code!=='200'){
+    //   Message({
+    //     message: data.message,
+    //     type: 'error',
+    //     duration: 5 * 1000
+    //   })
+    // }
     return Promise.resolve({
       success: true,
-      message: statusText,
       statusCode: status,
-      data: data
+      ...data
     })
   }).catch((error) => {
     const { response } = error
