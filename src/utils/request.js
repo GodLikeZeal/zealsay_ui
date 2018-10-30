@@ -45,8 +45,9 @@ export default function request(options) {
   return fetch(options).then((response) => {
     const { statusText, status } = response
     const data = response.data
-    if(data.code=='404'){
+    if(data.code=='404'||data.code=='401'){
       //跳转404路由
+      this.$router.push({ path: `/error/${data.code}`})
       return
     }
     // if(data.code!=='200'){
