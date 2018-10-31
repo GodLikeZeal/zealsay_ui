@@ -3,6 +3,8 @@ export default {
     dashboard: 'Panel de control',
     introduction: 'Introducción',
     documentation: 'Documentación',
+    userManage: 'Gerenciamento de usuários',
+    roleManage: 'O Papel Da gestão',
     guide: 'Guía',
     permission: 'Permisos',
     pagePermission: 'Permisos de la página',

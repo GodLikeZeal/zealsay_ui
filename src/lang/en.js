@@ -3,6 +3,8 @@ export default {
     dashboard: 'Dashboard',
     introduction: 'Introduction',
     documentation: 'Documentation',
+    userManage: 'User Manage',
+    roleManage: 'Role Manage',
     guide: 'Guide',
     permission: 'Permission',
     pagePermission: 'Page Permission',

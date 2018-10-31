@@ -16,6 +16,11 @@
       <el-table-column prop="email" label="邮箱"/>
       <el-table-column prop="phoneNumber" label="手机号码"/>
       <el-table-column prop="age" label="年龄"/>
+      <el-table-column prop="sex" label="性别">
+        <template slot-scope="scope">
+          <span>{{ scope.row.sex == '1'?'男':'女' }}</span>
+        </template>
+      </el-table-column>
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="handleClick(scope.row)">详情</el-button>
@@ -26,13 +31,15 @@
   </div>
 </template>
 <script>
-import { getUserList } from '@/api/userManage'
+import { getUserList } from '@/api/user'
 export default {
+  name: 'User',
   data() {
     return {
       userList: [],
       phone: '',
-      email: ''
+      email: '',
+      sex: ''
     }
   },
   created() {
