@@ -92,7 +92,8 @@ export default {
     width: 120px;
     margin-right: 20px;
   }
-  .align-right p label:nth-of-type(1){
+  .el-dialog__body p label:nth-of-type(1){
+    display: inline-block;
     width: 80px;
     text-align: right;
   }
