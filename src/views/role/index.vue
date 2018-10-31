@@ -16,6 +16,32 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-dialog
+      :visible.sync="dialogVisible"
+      :before-close="handleClose"
+      title="角色信息"
+      class="align-right">
+      <p>
+        <label type="label" class="small">角色名称：</label>
+        <label type="text">{{ row.name }}</label>
+      </p>
+      <p>
+        <label type="label">value：</label>
+        <label type="text">{{ row.value }}</label>
+      </p>
+      <p>
+        <label type="label">描述：</label>
+        <label type="text">{{ row.description }}</label>
+      </p>
+      <p>
+        <label type="label">创建时间：</label>
+        <label type="text">{{ row.createAt }}</label>
+      </p>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -26,7 +52,9 @@ export default {
     return {
       roleList: [],
       name: '',
-      value: ''
+      value: '',
+      row: '',
+      dialogVisible: false
     }
   },
   created() {
@@ -36,6 +64,11 @@ export default {
   },
   methods: {
     handleClick(row) {
+      this.dialogVisible = true
+      this.row = row
+    },
+    handleClose(row) {
+      this.dialogVisible = false
       console.log(row)
     },
     handleSelectionChange() {}
@@ -58,6 +91,10 @@ export default {
   .search-input{
     width: 120px;
     margin-right: 20px;
+  }
+  .align-right p label:nth-of-type(1){
+    width: 80px;
+    text-align: right;
   }
 </style>
 
