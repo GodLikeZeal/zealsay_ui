@@ -6,20 +6,19 @@
     </div>
     <el-table :data="userList" style="width: 100%" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column prop="username" label="账户名" width="120" />
-      <el-table-column label="头像" width="100">
+      <el-table-column prop="username" label="账户名" />
+      <el-table-column label="头像" width="60">
         <template slot-scope="scope">
           <img :src="scope.row.avatar" alt="图片" class="img">
         </template>
       </el-table-column>
-      <el-table-column prop="name" label="姓名" width="120" />
-      <el-table-column prop="email" label="邮箱" />
+      <el-table-column prop="name" label="姓名" />
+      <el-table-column prop="email" label="邮箱" width="200" />
       <el-table-column prop="phoneNumber" label="手机号码" />
-      <el-table-column prop="age" label="年龄" width="80" />
-      <el-table-column prop="sex" label="性别" width="80">
+      <el-table-column prop="age" label="年龄" />
+      <el-table-column label="性别">
         <template slot-scope="scope">
-          <span>{{ scope.row.sex == '1'?'男':'女' }}</span>
-        </template>
+        <span>{{ scope.row.age==1?'男':'女' }}<span/></span></template>
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
@@ -28,26 +27,19 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-dialog :visible.sync="dialogVisible" title="账户详情" width="35%">
-      <div class="card">
-        <p><img :src="row.avatar" alt="图片" class="img"></p>
-        <p><span>{{ row.name }}</span><span>{{ row.age }}</span><span>{{ row.sex==1?'男':'女' }}</span></p>
-      </div>
-      <div class="list">
-        <p><span><span>账户名称:</span><span>{{ row.username }}</span></span><span><span>邮箱:</span><span>{{ row.email }}</span></span></p>
-        <p><span><span>手机号码:</span><span>{{ row.phoneNumber }}</span></span></p>
-      </div>
-
+    <el-dialog :visible.sync="dialogVisible" :before-close="handleClose" title="提示" width="30%">
+      <span>这是一段信息</span>
       <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
       </span>
     </el-dialog>
   </div>
+
 </template>
 <script>
-import { getUserList } from '@/api/user'
+import { getUserList } from '@/api/userManage'
 export default {
-  name: 'User',
   data() {
     return {
       userList: [],
@@ -64,11 +56,16 @@ export default {
   },
   methods: {
     handleClick(row) {
+      console.log(row)
       this.row = row
       this.dialogVisible = true
-      console.log(this.row)
     },
-    handleSelectionChange() {}
+    handleSelectionChange() {
+
+    },
+    handleClose() {
+      this.dialogVisible = false
+    }
   }
 }
 </script>
@@ -88,32 +85,6 @@ export default {
 .search-input {
   width: 120px;
   margin-right: 20px;
-}
-.card{
-  text-align: center;
-  margin-bottom: 20px;
-    span{
-      margin: 0 10px;
-    }
-    img{
-      width: 100px;
-      height: 100px;
-      border-radius: 50px;
-    }
-}
-.list p{
-  width: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-.list p span span:nth-child(1) {
-  display: inline-block;
-  width: 70px;
-  text-align: right;
-  margin-right: 10px;
 }
 </style>
 
