@@ -3,6 +3,8 @@ export default {
     dashboard: '首页',
     introduction: '简述',
     documentation: '文档',
+    userManage: '用户管理',
+    roleManage: '角色管理',
     guide: '引导页',
     permission: '权限测试页',
     pagePermission: '页面权限',

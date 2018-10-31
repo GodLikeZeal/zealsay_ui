@@ -89,19 +89,6 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/userManage',
-    component: Layout,
-    redirect: '/userManage/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/userManage/index'),
-        name: 'userManage',
-        meta: { title: '用户管理', icon: 'documentation', noCache: true }
-      }
-    ]
-  },
-  {
     path: '/guide',
     component: Layout,
     redirect: '/guide/index',
@@ -123,6 +110,42 @@ export default new Router({
 })
 
 export const asyncRouterMap = [
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/index',
+    meta: {
+      title: 'userManage',
+      icon: 'peoples'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/user/index'),
+        roles: 'ADMIN',
+        name: 'User',
+        meta: { title: 'userManage', icon: 'peoples' }
+      }
+    ]
+  },
+  {
+    path: '/role',
+    component: Layout,
+    redirect: '/user/index',
+    meta: {
+      title: 'roleManage',
+      icon: 'people'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/role/index'),
+        roles: 'ADMIN',
+        name: 'Role',
+        meta: { title: 'roleManage', icon: 'people' }
+      }
+    ]
+  },
   {
     path: '/permission',
     component: Layout,
