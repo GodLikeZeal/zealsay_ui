@@ -11,18 +11,17 @@
       <el-table-column prop="description" label="描述"/>
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="handleClick(scope.row)">详情</el-button>
-          <el-button type="text" size="small">编辑</el-button>
+          <el-button type="text" size="small" title="详情" @click="handleDetailClick(scope.row)">详情</el-button>
+          <el-button type="text" size="small" title="修改" @click="handleEditClick(scope.row)">修改</el-button>
         </template>
       </el-table-column>
     </el-table>
     <el-dialog
-      :visible.sync="dialogVisible"
-      :before-close="handleClose"
+      :visible.sync="detailDialogVisible"
       title="角色信息"
       class="align-right">
       <p>
-        <label type="label" class="small">角色名称：</label>
+        <label type="label" >角色名称：</label>
         <label type="text">{{ row.name }}</label>
       </p>
       <p>
@@ -38,8 +37,28 @@
         <label type="text">{{ row.createAt }}</label>
       </p>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        <el-button @click="detailDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="detailDialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
+    <el-dialog
+      :visible.sync="editDialogVisible"
+      title="角色信息"
+      class="align-right">
+      <el-form :model="row">
+        <el-form-item :label-width="formLabelWidth" label="角色名称：">
+          <el-input v-model="row.name" autocomplete="off"/>
+        </el-form-item>
+        <el-form-item :label-width="formLabelWidth" label="value：">
+          <el-input v-model="row.value" autocomplete="off"/>
+        </el-form-item>
+        <el-form-item :label-width="formLabelWidth" label="描述：">
+          <el-input v-model="row.description" autocomplete="off"/>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="editDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="handleEditSave">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -54,21 +73,27 @@ export default {
       name: '',
       value: '',
       row: '',
-      dialogVisible: false
+      detailDialogVisible: false,
+      editDialogVisible: false,
+      formLabelWidth: '120px'
     }
   },
   created() {
     getRoleList().then(res => {
-      this.roleList = res.data
+      this.roleList = res.data.records
     })
   },
   methods: {
-    handleClick(row) {
-      this.dialogVisible = true
+    handleDetailClick(row) {
+      this.detailDialogVisible = true
       this.row = row
     },
-    handleClose(row) {
-      this.dialogVisible = false
+    handleEditClick(row) {
+      this.editDialogVisible = true
+      this.row = row
+    },
+    handleEditSave(row) {
+      this.editDialogVisible = false
       console.log(row)
     },
     handleSelectionChange() {}
@@ -92,7 +117,7 @@ export default {
     width: 120px;
     margin-right: 20px;
   }
-  .el-dialog__body p label:nth-of-type(1){
+  .align-right p label:nth-of-type(1){
     display: inline-block;
     width: 80px;
     text-align: right;

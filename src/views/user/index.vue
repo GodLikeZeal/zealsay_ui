@@ -31,10 +31,10 @@
     <el-dialog :visible.sync="dialogVisible" title="账户详情" width="35%">
       <div class="card">
         <p><img :src="row.avatar" alt="图片" class="img"></p>
-        <p><span>{{ row.name }}</span><span>{{ row.age }}</span><span>{{ row.sex==1?'男':'女' }}</span></p>
+        <p><span>{{ row.username }}</span><span>{{ row.age }}</span><span>{{ row.sex==1?'男':'女' }}</span></p>
       </div>
       <div class="list">
-        <p><span><span>账户名称:</span><span>{{ row.username }}</span></span><span><span>邮箱:</span><span>{{ row.email }}</span></span></p>
+        <p><span><span>姓名:</span><span>{{ row.name }}</span></span><span><span>邮箱:</span><span>{{ row.email }}</span></span></p>
         <p><span><span>手机号码:</span><span>{{ row.phoneNumber }}</span></span></p>
       </div>
 
@@ -59,7 +59,7 @@ export default {
   },
   created() {
     getUserList().then(res => {
-      this.userList = res.data
+      this.userList = res.data.records
     })
   },
   methods: {
@@ -79,7 +79,7 @@ export default {
 .img {
   width: 30px;
   height: 30px;
-  border-radius: 10px;
+  border-radius: 15px;
   vertical-align: middle;
 }
 .search-con {
