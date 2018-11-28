@@ -16,6 +16,16 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      :current-page.sync="currentPage"
+      :page-sizes="[10, 50, 100, 200]"
+      :page-size.sync="pageSize"
+      :total="total"
+      class="right-bottom"
+      background
+      layout="total, prev, pager, next, sizes"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"/>
     <el-dialog
       :visible.sync="detailDialogVisible"
       title="角色信息"
@@ -75,11 +85,17 @@ export default {
       row: '',
       detailDialogVisible: false,
       editDialogVisible: false,
-      formLabelWidth: '120px'
+      formLabelWidth: '120px',
+      currentPage: 1,
+      pageSize: 10,
+      total: 5
     }
   },
   created() {
     getRoleList().then(res => {
+      this.pageSize = res.data.pageSize
+      this.currentPage = res.data.currentPage
+      this.total = res.data.total
       this.roleList = res.data.records
     })
   },
@@ -121,6 +137,10 @@ export default {
     display: inline-block;
     width: 80px;
     text-align: right;
+  }
+  .right-bottom{
+    float: right;
+    margin: 20px;
   }
 </style>
 
